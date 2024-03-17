@@ -1,0 +1,128 @@
+" copying between vims
+set clipboard=unnamedplus
+
+" highlight the cursor line
+set cursorline
+
+" allow mouse usage
+set mouse=a
+
+" show number lines
+set number
+" make them relative
+set relativenumber
+
+" set the color scheme
+colorscheme noctu 
+
+" something about splits
+set splitbelow splitright
+
+" show file title
+set title
+
+" time in milliseconds to run commands
+set ttimeoutlen=0
+
+" shows a more advanced menu for auto-completion suggestions
+set wildmenu
+
+" Tabs size
+set expandtab
+set shiftwidth=4
+set tabstop=4
+
+" To add automatic syntax support for open files
+filetype plugin indent on
+syntax on
+
+" Italics
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+
+" File browser
+let g:netrw_banner=0
+let g:netrw_liststyle=0
+let g:netrw_browse_split=4
+let g:netrw_altv=1
+let g:netrw_winsize=25
+let g:netrw_keepdir=0
+let g:netrw_localcopydircmd='cp -r'
+
+call plug#begin()
+    " Appearance
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'ryanoasis/vim-devicons'
+"    " Make inactive windows grayer
+"    Plug 'sunjon/shade.nvim'
+"    Plug 'jeffkreeftmeijer/vim-dim'
+
+    " Utilities
+    Plug 'sheerun/vim-polyglot'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'ap/vim-css-color'
+    Plug 'preservim/nerdtree'
+    Plug 'junegunn/fzf'
+    Plug 'junegunn/fzf.vim'
+    " Run code from neovim
+    Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
+    Plug 'habamax/vim-godot'
+
+    Plug 'sbdchd/neoformat'
+"    Plug 'nvim-neo-tree/neo-tree.nvim'
+
+"    " Completion / linters / formatters
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'plasticboy/vim-markdown'
+call plug#end()
+
+" Airline plugin for tabs
+"let g:airline_theme='sobrio'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='base16'
+" 'wombat'
+
+" CocInstall coc-python
+" CocInstall coc-rust-analyzer
+" CocInstall coc-clangd
+" CocInstall coc-sh
+" CocInstall coc-texlab
+" CocInstall coc-xml
+" CocInstall coc-html
+
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocActionAsync('format')
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" C-p: FZF find files
+nnoremap <silent> <C-p> :Files<CR>
+
+" C-g: FZF ('g'rep)/find in files
+nnoremap <silent> <C-g> :Rg<CR>
+
+" Navigating through buffers
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
