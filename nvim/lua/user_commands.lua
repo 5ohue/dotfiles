@@ -20,7 +20,7 @@ vim.api.nvim_create_user_command(
     }
 )
 vim.api.nvim_create_user_command('InsertLineSeparator', 'norm I//<ESC>a-<ESC>76.', {})
-vim.api.nvim_create_user_command('RemoveLongSEComments', ':%s/\\/\\/\\(.\\{50\\}\\)---------*$/\\/\\/\\1---------------------------/e', {})
+vim.api.nvim_create_user_command('RemoveLongLineComments', ':%s/\\/\\/\\(.\\{50\\}\\)---------*$/\\/\\/\\1---------------------------/e', {})
 
 vim.api.nvim_create_user_command(
     'RemoveTrailingWhiteSpace',

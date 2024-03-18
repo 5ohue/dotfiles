@@ -1,7 +1,7 @@
 vim.g.mapleader = ','
 
-vim.keymap.set('n', '<leader>q', ':q<CR>',                                      { desc = '[Q]uit the current file' })
-vim.keymap.set('n', '<leader>w', ':ret<CR>:RemoveTrailingWhiteSpace<CR>:w<CR>', { desc = '[W]rite current file' })
+vim.keymap.set('n', '<leader>q', ':q<CR>', { desc = '[Q]uit the current file' })
+vim.keymap.set('n', '<leader>w', ':ret<CR>:RemoveLongLineComments<CR>:RemoveTrailingWhiteSpace<CR>:w<CR>', { desc = '[W]rite current file' })
 
 vim.keymap.set({'n', 'x'}, '<leader>cy', '"+y', { desc = 'System [c]lipboard: [y]ank'  })
 vim.keymap.set({'n', 'x'}, '<leader>cp', '"+p', { desc = 'System [c]lipboard: [p]aste' })

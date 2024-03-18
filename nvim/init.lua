@@ -1,6 +1,7 @@
 require 'set'
 require 'remap'
 require 'user_commands'
+require 'auto_commands'
 
 require 'init_lazy'     -- Initialize(install) lazy plugin manager
 require 'plugins'       -- Install all needed plugins using Lazy
