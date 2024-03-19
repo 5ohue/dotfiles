@@ -1,0 +1,8 @@
+import = ["~/.config/alacritty/theme-mint.toml",
+          "~/.config/alacritty/font-liberation.toml",
+          "~/.config/alacritty/window.toml"]
+
+live_config_reload = false
+
+[font]
+size = 10

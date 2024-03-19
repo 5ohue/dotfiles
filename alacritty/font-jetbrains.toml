@@ -1,0 +1,15 @@
+[font.normal]
+family = "JetBrainsMonoNL Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "JetBrainsMonoNL Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "JetBrainsMonoNL Nerd Font"
+style = "Italic"
+
+[font.bold_italic]
+family = "JetBrainsMonoNL Nerd Font"
+style = "Bold Italic"
