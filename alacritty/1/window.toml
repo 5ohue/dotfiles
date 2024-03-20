@@ -1,1 +1,5 @@
-../window.toml
+[window]
+opacity = 0.85
+blur = true
+title = "Terminal"
+dynamic_title = false

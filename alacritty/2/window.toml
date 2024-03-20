@@ -1,1 +1,3 @@
-../window.toml
+[window]
+title = "Terminal"
+dynamic_title = false
