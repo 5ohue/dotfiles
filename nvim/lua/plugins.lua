@@ -72,6 +72,7 @@ require('lazy').setup({
             -- }
         end,
     },
+    {'HiPhish/rainbow-delimiters.nvim'},
 
     -- Color themes
     {'5ohue/atlasue.vim'}, -- My own color scheme!!!
