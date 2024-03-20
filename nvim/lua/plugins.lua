@@ -73,6 +73,11 @@ require('lazy').setup({
         end,
     },
     {'HiPhish/rainbow-delimiters.nvim'},
+    {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" }
+    },
 
     -- Color themes
     {'5ohue/atlasue.vim'}, -- My own color scheme!!!
