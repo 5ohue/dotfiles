@@ -1,36 +1,23 @@
-# https://github.com/aarowill/base16-alacritty/blob/master/colors/base16-darktooth.toml
-
-[colors]
-draw_bold_text_with_bright_colors = false
-
-# Default colors
-[colors.primary]
-background = '0x1d2021'
-foreground = '0xa89984'
-
-# Colors the cursor will use if `custom_cursor_colors` is true
-[colors.cursor]
-text = '0x1d2021'
-cursor = '0xa89984'
-
-# Normal colors
-[colors.normal]
-black = '0x1d2021'
-red = '0xfb543f'
-green = '0x95c085'
-yellow = '0xfac03b'
-blue = '0x0d6678'
-magenta = '0x8f4673'
-cyan = '0x8ba59b'
-white = '0xa89984'
-
-# Bright colors
 [colors.bright]
-black = '0x665c54'
-red = '0xfe8625'
-green = '0x32302f'
-yellow = '0x504945'
-blue = '0x928374'
-magenta = '0xd5c4a1'
-cyan = '0xa87322'
-white = '0xfdf4c1'
+black      =  "0x69605f"
+blue       =  "0x89ad9f"
+cyan       =  "0x41deec"
+green      =  "0xc0c328"
+magenta    =  "0xdb8ba1"
+red        =  "0xfd513c"
+white      =  "0xffffce"
+yellow     =  "0xfcc138"
+
+[colors.normal]
+black      =  "0x2a2a2a"
+blue       =  "0x076c7f"
+cyan       =  "0x00adb6"
+green      =  "0x7d780e"
+magenta    =  "0x964277"
+red        =  "0xe4412f"
+white      =  "0xfef6c8"
+yellow     =  "0xbd7b15"
+
+[colors.primary]
+background =  "0x2a2a2a"
+foreground =  "0xfef6cb"
