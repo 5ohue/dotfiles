@@ -19,7 +19,7 @@ local colors = {
     parameter  = { fg = '#7F7F7F' },
     static     = { fg = '#A97FB8', bold = true },
     constant   = { fg = '#82C5C2', bold = true },
-    builtin    = { fg = '#569cd6', bold = true },
+    builtin    = { fg = '#569CD6', bold = true },
     enumMember = { fg = '#B8D7A3' },
     namespace  = { fg = '#B8D7A3', bold = true },
     import     = { fg = '#B183C2', bold = true },
@@ -54,3 +54,7 @@ vim.api.nvim_set_hl(0, 'RainbowDelimiterRed',               { fg = '#F2594B'})
 vim.api.nvim_set_hl(0, 'RainbowDelimiterGreen',             { fg = '#80D45C'})
 vim.api.nvim_set_hl(0, 'RainbowDelimiterOrange',            { fg = '#FF8A33'})
 vim.api.nvim_set_hl(0, 'RainbowDelimiterCyan',              { fg = '#4FB7C8'})
+
+-- indent-blankline.nvim
+vim.api.nvim_set_hl(0, '@ibl.indent.char.1',                { fg = '#2F2E2E' }) -- Indentation
+vim.api.nvim_set_hl(0, '@ibl.scope.char.1',                 { fg = '#373533' }) -- Indentation
