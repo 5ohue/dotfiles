@@ -49,7 +49,7 @@ vim.opt.list = true
 vim.opt.listchars = {tab = '>~', trail = '·', precedes = '#'}
 
 -- Do not highlight previously searched words indefinetely
-vim.opt.hlsearch = false
+-- vim.opt.hlsearch = false
 
 -- No delay when switching between modes
 vim.opt.ttimeoutlen = 0

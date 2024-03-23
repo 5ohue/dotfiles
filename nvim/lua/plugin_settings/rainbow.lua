@@ -17,11 +17,16 @@ vim.g.rainbow_delimiters = {
     },
     highlight = {
         'RainbowDelimiterYellow',
-        'RainbowDelimiterBlue',
         'RainbowDelimiterOrange',
         'RainbowDelimiterGreen',
-        'RainbowDelimiterViolet',
+        'RainbowDelimiterBlue',
         'RainbowDelimiterCyan',
+        'RainbowDelimiterViolet',
         'RainbowDelimiterRed',
     },
 }
+
+-- Change colors
+vim.api.nvim_set_hl(0, 'RainbowDelimiterOrange', { fg = '#FF8A33'})
+vim.api.nvim_set_hl(0, 'RainbowDelimiterCyan',   { fg = '#4FB7C8'})
+vim.api.nvim_set_hl(0, 'RainbowDelimiterRed',    { fg = '#F2594B'})

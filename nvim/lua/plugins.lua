@@ -72,7 +72,9 @@ require('lazy').setup({
             -- }
         end,
     },
+    -- Color nested brackets differently
     {'HiPhish/rainbow-delimiters.nvim'},
+    -- Convinient file navigation
     {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",

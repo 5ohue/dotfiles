@@ -17,6 +17,8 @@ vim.keymap.set('v', 'gk', ":m '>-2<CR>gv=gv")
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
+vim.keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = '[N]o [H]ighlight'})
+
 -- Greatest remap ever
 vim.keymap.set('x', '<leader>p', '"_dP', { desc = '[p]aste without yanking the deleted text' })
 
