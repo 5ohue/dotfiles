@@ -1,6 +1,7 @@
 import = ["~/.config/alacritty/theme-mint.toml",
           "~/.config/alacritty/font-liberation.toml",
-          "~/.config/alacritty/window.toml"]
+          "~/.config/alacritty/window.toml",
+          "~/.config/alacritty/mouse.toml"]
 
 live_config_reload = false
 

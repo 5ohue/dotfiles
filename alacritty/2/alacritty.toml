@@ -1,6 +1,7 @@
 import = ["~/.config/alacritty/theme-wombat.toml",
           "~/.config/alacritty/font-jetbrains.toml",
-          "~/.config/alacritty/window.toml"]
+          "~/.config/alacritty/window.toml",
+          "~/.config/alacritty/mouse.toml"]
 
 live_config_reload = false
 
