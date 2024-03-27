@@ -77,6 +77,7 @@ vim.api.nvim_set_hl(0, '@ibl.scope.char.1',                 { fg = '#373533' }) 
 -- makes the colors inconsistent. Doing the following fixes this.
 -- Source: https://neovim.io/doc/user/lsp.html#vim.lsp.semantic_tokens.highlight_token()
 vim.api.nvim_set_hl(0, 'MyStatic',                          colors.static)
+vim.api.nvim_set_hl(0, 'MyEnumMember',                      colors.enumMember)
 vim.api.nvim_create_autocmd('LspTokenUpdate', {
     callback = function(args)
         local token = args.data.token
@@ -85,6 +86,12 @@ vim.api.nvim_create_autocmd('LspTokenUpdate', {
                                                     args.buf,
                                                     args.data.client_id,
                                                     'MyStatic')
+        end
+        if token.type == 'enumMember' then
+            vim.lsp.semantic_tokens.highlight_token(token,
+                                                    args.buf,
+                                                    args.data.client_id,
+                                                    'MyEnumMember')
         end
     end,
 })
