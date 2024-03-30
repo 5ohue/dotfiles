@@ -1,7 +1,7 @@
 vim.api.nvim_create_user_command('InsertDate', ':r !date -u +"\\%d.\\%m.\\%Y \\%H:\\%M:\\%S"', {})
 vim.api.nvim_create_user_command(
     'InsertTemplateData',
-    "norm ggo File:    '<ESC>\"%p:InsertDate<CR>Di// Created: <ESC>p6byw2j03Elp",
+    "norm ggo File:    '<ESC>\"%p:InsertDate<CR>Di// Created: <ESC>p6byw2j03Elp2G$F/dT'xGddgg",
     {}
 )
 vim.api.nvim_create_user_command('InsertHeaderTemplate', 'norm gg:0r !cat ~/.git-clones/misc/SE/Header.txt<CR>:InsertTemplateData<CR>', {})
@@ -12,8 +12,11 @@ vim.api.nvim_create_user_command(
         local vimCmd = '%s/namespace \\w*/namespace '
         if (args['fargs'][1]) then
             vimCmd = vimCmd .. args['fargs'][1] .. '/eg'
-            vim.cmd(vimCmd)
+        else
+            return
         end
+        vim.cmd(vimCmd)
+        vim.cmd('nohl')
     end,
     {
         nargs = 1
