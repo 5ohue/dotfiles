@@ -1,0 +1,15 @@
+[font.normal]
+family = "LilexExtraThick Nerd Font Mono"
+style = "Regular"
+
+[font.bold]
+family = "LilexExtraThick Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "LilexExtraThick Nerd Font Mono"
+style = "Italic"
+
+[font.bold_italic]
+family = "LilexExtraThick Nerd Font Mono"
+style = "Bold Italic"
