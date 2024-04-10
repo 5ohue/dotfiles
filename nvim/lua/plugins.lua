@@ -80,6 +80,15 @@ require('lazy').setup({
         branch = "harpoon2",
         dependencies = { "nvim-lua/plenary.nvim" }
     },
+    -- Create pretty images of code from neovim
+    {
+        "mistricky/codesnap.nvim",
+        build = "make",
+        opts = {
+            has_breadcrumbs = true,     -- Add file path
+            bg_theme = "bamboo"
+        }
+    },
 
     -- Color themes
     {'5ohue/atlasue.vim'}, -- My own color scheme!!!
