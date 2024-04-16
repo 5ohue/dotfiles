@@ -16,8 +16,8 @@ vim.g.rainbow_delimiters = {
         lua = 210,
     },
     highlight = {
-        'RainbowDelimiterGreen',
-        'RainbowDelimiterBlue',
-        'RainbowDelimiterCyan',
+        'MyBracket1',
+        'MyBracket2',
+        'MyBracket3',
     },
 }

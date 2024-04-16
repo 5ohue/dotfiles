@@ -25,6 +25,10 @@ local colors = {
     namespace  = { fg = '#B8D7A3', bold = true },
     import     = { fg = '#7F7F7F', bold = false },
     preproc    = { fg = '#7F7F7F', bold = false },
+
+    bracket1   = { fg = '#80D45C', bold = false },
+    bracket2   = { fg = '#F2B819', bold = false },
+    bracket3   = { fg = '#4EC9B0', bold = false },
 }
 -------------------------------------------------------------------------------
 -- Calling the vim command does not reset all the highlight parameters unlike
@@ -64,10 +68,9 @@ vim.api.nvim_set_hl(0, '@lsp.typemod.enumMember.readonly',  colors.enumMember)  
 vim.api.nvim_set_hl(0, '@lsp.mod.declaration',              { bold = true })    -- Declarations
 
 -- Rainbow bracket colors
-vim.api.nvim_set_hl(0, 'RainbowDelimiterRed',               { fg = '#F2594B' })
-vim.api.nvim_set_hl(0, 'RainbowDelimiterGreen',             { fg = '#80D45C' })
-vim.api.nvim_set_hl(0, 'RainbowDelimiterOrange',            { fg = '#FF8A33' })
-vim.api.nvim_set_hl(0, 'RainbowDelimiterCyan',              { fg = '#4AABBB' })
+vim.api.nvim_set_hl(0, 'MyBracket1',                        colors.bracket1)
+vim.api.nvim_set_hl(0, 'MyBracket2',                        colors.bracket2)
+vim.api.nvim_set_hl(0, 'MyBracket3',                        colors.bracket3)
 
 -- indent-blankline.nvim
 vim.api.nvim_set_hl(0, '@ibl.indent.char.1',                { fg = '#2F2E2E' }) -- Indentation
