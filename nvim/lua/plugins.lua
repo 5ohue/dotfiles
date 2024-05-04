@@ -18,7 +18,8 @@ require('lazy').setup({
     -- Command `cs"'` changes a pair of "" to a pair of ''
     -- This plugin also allows to quickly add parens around words
     -- (in visual mode press 'S)' to wrap with parens)
-    {'tpope/vim-surround'}, -- Git integration inside neovim
+    {'tpope/vim-surround'},
+    -- Git integration inside neovim
     {'tpope/vim-fugitive'},
     -- Git decorations inside neovim
     {'lewis6991/gitsigns.nvim'},
@@ -38,15 +39,6 @@ require('lazy').setup({
         keys = {
             { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
         }
-    },
-    -- Show markdown presentations in nvim
-    {
-        "sotte/presenting.nvim",
-        opts = {
-            -- fill in your options here
-            -- see :help Presenting.config
-        },
-        cmd = { "Presenting" },
     },
     -- Preview markdown in browser
     {
@@ -92,8 +84,11 @@ require('lazy').setup({
 
     -- Color themes
     {'5ohue/atlasue.vim'}, -- My own color scheme!!!
+    {
+        '5ohue/nova_cs_theme_example',
+        dir = '/home/sohue/.git-clones/nova_cs_theme_example'
+    },
     {'rebelot/kanagawa.nvim'},
-    {'kxzk/skull-vim'},
     {'xero/miasma.nvim'},
     {
         'ribru17/bamboo.nvim',
@@ -145,32 +140,11 @@ require('lazy').setup({
     {'ldelossa/litee-symboltree.nvim'},
     -- Show the call tree
     {'ldelossa/litee-calltree.nvim'},
-    {
-        "Exafunction/codeium.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "hrsh7th/nvim-cmp",
-        },
-        config = function()
-            require("codeium").setup({
-            })
-        end
-    },
     -- Highlight all the symbols that are under the cursor
     {'RRethy/vim-illuminate'},
     -- A pretty list for showing diagnostics, references, telescope results and location lists to help you solve all the trouble your code is causing.
     {'folke/trouble.nvim'},
-    -- A plugin that provides refactoring helper functions
-    {
-        "ThePrimeagen/refactoring.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-        },
-        config = function()
-            require("refactoring").setup()
-        end,
-    },
+    -- :Neogen command to create documentation quickly
     {
         "danymat/neogen",
         dependencies = "nvim-treesitter/nvim-treesitter",
