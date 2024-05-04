@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/theme-wombat.toml",
+import = ["~/.config/alacritty/theme-darktooth.toml",
           "~/.config/alacritty/font-jetbrains.toml",
           "~/.config/alacritty/window.toml",
           "~/.config/alacritty/mouse.toml"]
