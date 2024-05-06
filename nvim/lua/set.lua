@@ -43,6 +43,7 @@ vim.opt.colorcolumn = "80"
 
 -- Cursor will not be at very top/bottom of screen
 vim.opt.scrolloff = 5
+vim.opt.sidescrolloff = 5
 
 -- Display tab characters and trailing whitespace
 vim.opt.list = true

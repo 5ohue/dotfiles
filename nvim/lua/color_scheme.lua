@@ -25,7 +25,7 @@ vim.api.nvim_create_user_command(
 )
 
 -- Set colorscheme
-set_colorscheme('darktooth')
+set_colorscheme('my_palette')
 
 
 
