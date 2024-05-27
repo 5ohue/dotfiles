@@ -6,4 +6,5 @@ require'FTerm'.setup({
     },
 })
 
-vim.keymap.set('n', '<leader>ft', require('FTerm').toggle)
+vim.keymap.set('n', '<leader>ft', require('FTerm').toggle, { desc = '[F]Term [Toggle]' })
+vim.keymap.set('t', '<C-A>', '<C-\\><C-N>')
