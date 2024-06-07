@@ -64,4 +64,8 @@ if _G.IS_LINUX then
     vim.opt.backup   = false
     vim.opt.undodir  = os.getenv("HOME") .. "/.vim/undodir"
     vim.opt.undofile = true
+
+    -- Don't use fish shell
+    vim.shell = '/bin/bash'
 end
+
