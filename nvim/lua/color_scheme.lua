@@ -28,7 +28,7 @@ local this_computer = os.getenv('THIS_COMPUTER')
 
 if this_computer == 'lenovo_legion' then
     set_colorscheme('my_palette')
-elseif this_computer == 'lenovo_b519' then
+elseif this_computer == 'lenovo_b590' then
     set_colorscheme('darktooth')
 else
     -- Fallback palette
