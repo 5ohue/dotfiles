@@ -11,6 +11,9 @@ if status is-interactive
     alias vim='nvim'
     alias youtube-mp3='yt-dlp -x --audio-format mp3'
     alias cFormat='astyle --style=google -k3 -W3 -s -C -xG -xf -xh -S -K -H -xU -f -p -U -xg -j -xh -O -c -xb'
+    alias termdown="termdown -f roman"
+    alias figlet="pyfiglet -f larry3d"
+    alias cls="clear"
     function boox
         echo $argv | boxes -d cc -a hcvc -s 80 -p v1
     end
