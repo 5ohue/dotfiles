@@ -6,13 +6,12 @@ function set_colorscheme(palette_name)
     local palette = require('palettes.' .. palette_name)
 
     require('nova_cs_theme_example').set_palette(palette)
-
-    -- Set colorscheme
     vim.cmd.colorscheme 'nova_cs_theme_example'
 
     -- Set lualine colorscheme
     require('lualine').setup { options = { theme = require('nova_cs_theme_example').lualine } }
 end
+
 -- ':NovaCS darktooth' to change nova cs palette
 vim.api.nvim_create_user_command(
     'NovaCS',
@@ -25,7 +24,16 @@ vim.api.nvim_create_user_command(
 )
 
 -- Set colorscheme
-set_colorscheme('my_palette')
+local this_computer = os.getenv('THIS_COMPUTER')
+
+if this_computer == 'lenovo_legion' then
+    set_colorscheme('my_palette')
+elseif this_computer == 'lenovo_b519' then
+    set_colorscheme('darktooth')
+else
+    -- Fallback palette
+    set_colorscheme('mint')
+end
 
 
 
