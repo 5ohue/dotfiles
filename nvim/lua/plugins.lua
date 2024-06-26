@@ -137,7 +137,7 @@ require('lazy').setup({
     {
         'nvim-treesitter/nvim-treesitter-context',
         opts = {
-            enable              = true,         -- Enable this plugin (Can be enabled/disabled later via commands)
+            enable              = false,        -- Enable this plugin (Can be enabled/disabled later via commands)
             max_lines           = 0,            -- How many lines the window should span. Values <= 0 mean no limit.
             min_window_height   = 0,            -- Minimum editor window height to enable context. Values <= 0 mean no limit.
             line_numbers        = true,
@@ -151,6 +151,11 @@ require('lazy').setup({
             on_attach           = nil,          -- (fun(buf: integer): boolean) return false to disable attaching
         },
     },
+    -- {
+    --     "m4xshen/hardtime.nvim",
+    --     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    --     opts = {}
+    -- },
 
     -- Color themes
     {'5ohue/atlasue.vim'}, -- My own color scheme!!!
