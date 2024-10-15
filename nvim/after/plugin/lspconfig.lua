@@ -8,7 +8,7 @@ lsp_defaults.capabilities = vim.tbl_deep_extend(
     cmp_nvim_lsp.default_capabilities()
 )
 
-local lsp_servers = { 'clangd', 'pyright', 'zls' }
+local lsp_servers = { 'clangd', 'pyright', 'zls', 'gopls' }
 for _, lsp in pairs(lsp_servers) do
     lspconfig[lsp].setup { }
 end

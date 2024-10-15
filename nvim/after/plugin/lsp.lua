@@ -8,6 +8,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
             vim.keymap.set('n', keys, func, { buffer = ev.buf, desc = 'LSP: ' .. desc })
         end
 
+        -- -- See `:help vim.lsp.*` for documentation on any of the below functions
+
         -- Jump to the definition of the word under your cursor.
         --  This is where a variable was first declared, or where a function is defined, etc.
         --  To jump back, press <C-t>.
@@ -49,46 +51,27 @@ vim.api.nvim_create_autocmd('LspAttach', {
         --  For example, in C this would take you to the header
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-        -- -- Buffer local mappings.
-        -- -- See `:help vim.lsp.*` for documentation on any of the below functions
-        -- vim.keymap.set('n', 'gD',         vim.lsp.buf.declaration,             { buffer = ev.buf })
-        -- vim.keymap.set('n', 'gd',         vim.lsp.buf.definition,              { buffer = ev.buf })
-        -- vim.keymap.set('n', 'K',          vim.lsp.buf.hover,                   { buffer = ev.buf })
-        -- vim.keymap.set('n', 'gi',         vim.lsp.buf.implementation,          { buffer = ev.buf })
-        -- vim.keymap.set('n', '<C-k>',      vim.lsp.buf.signature_help,          { buffer = ev.buf })
-        --
-        -- -- vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder,    { buffer = ev.buf })
-        -- -- vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, { buffer = ev.buf })
-        -- -- vim.keymap.set('n', '<leader>wl',
-        -- -- function(args)
-        -- --     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        -- -- end,
-        -- -- { buffer = ev.buf })
-        --
-        -- vim.keymap.set('n', '<leader>D',  vim.lsp.buf.type_definition,      { buffer = ev.buf, desc = 'Type [D]efinition' })
-        -- vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename,               { buffer = ev.buf, desc = '[R]e[N]ame symbol' })
-        -- vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { buffer = ev.buf, desc = '[C]ode [A]ction' })
-        -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = ev.buf })
-        -- vim.keymap.set({ 'n', 'v' }, '<leader>f',
-        -- function()
-        --     local format_args = {
-        --         async = true,
-        --     }
-        --     vim.lsp.buf.format(format_args)
-        -- end, { buffer = ev.buf, desc = '[F]ormat' })
-        -- vim.api.nvim_create_user_command('For',
-        -- function(args)
-        --     local format_args = {
-        --         async = true,
-        --     }
-        --     print(args.line1)
-        --     -- format_args['start'] = { args.line1, 0 }
-        --     -- format_args['end']   = { args.line2, 0 }
-        --     vim.lsp.buf.format(format_args)
-        -- end, {})
+        vim.keymap.set('n', '<C-k>',      vim.lsp.buf.signature_help,          { buffer = ev.buf })
+
+        -- Format the current buffer
+        vim.keymap.set({ 'n', 'v' }, '<leader>fb',
+            function()
+                local format_args = {
+                    async = true,
+                }
+                vim.lsp.buf.format(format_args)
+            end, { buffer = ev.buf, desc = '[F]ormat [B]uffer' })
+
+        -- Workspaces
+        vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder,    { buffer = ev.buf })
+        vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, { buffer = ev.buf })
+        vim.keymap.set('n', '<leader>wl',
+            function(args)
+                print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+            end, { buffer = ev.buf })
 
         -- Litee stuff
-        vim.keymap.set('n', '<leader>s',  vim.lsp.buf.document_symbol, { buffer = ev.buf, desc = 'List [s]ymbols' })
+        vim.keymap.set('n', '<leader>sl', vim.lsp.buf.document_symbol, { buffer = ev.buf, desc = '[S]ymbols [L]ist' })
         vim.keymap.set('n', '<leader>ci', vim.lsp.buf.incoming_calls,  { buffer = ev.buf, desc = '[C]alls: [i]ncoming' })
         vim.keymap.set('n', '<leader>co', vim.lsp.buf.outgoing_calls,  { buffer = ev.buf, desc = '[C]alls: [o]utcoming' })
     end,
