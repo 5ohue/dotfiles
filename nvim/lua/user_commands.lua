@@ -23,11 +23,25 @@ vim.api.nvim_create_user_command(
     }
 )
 vim.api.nvim_create_user_command('InsertLineSeparator', 'norm I//<ESC>a-<ESC>76.', {})
-vim.api.nvim_create_user_command('RemoveLongLineComments', ':%s/\\/\\/\\(.\\{50\\}\\)---------*$/\\/\\/\\1---------------------------/e', {})
+
+vim.api.nvim_create_user_command(
+    'RemoveLongLineComments',
+    function()
+        vim.cmd('let tmp = winsaveview()')
+        vim.cmd(':%s/\\/\\/\\(.\\{50\\}\\)---------*$/\\/\\/\\1---------------------------/e')
+        vim.cmd('nohl')
+        vim.cmd('call winrestview(tmp)')
+    end,
+    {})
 
 vim.api.nvim_create_user_command(
     'RemoveTrailingWhiteSpace',
-    '%s/\\s\\+$//e',
+    function()
+        vim.cmd('let tmp = winsaveview()')
+        vim.cmd('%s/\\s\\+$//e')
+        vim.cmd('nohl')
+        vim.cmd('call winrestview(tmp)')
+    end,
     {}
 )
 

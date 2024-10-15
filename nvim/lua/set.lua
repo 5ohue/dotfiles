@@ -37,6 +37,10 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth  = 4
 -- Do not insert \t character when hiting TAB
 vim.opt.expandtab   = true
+-- (0  --- Indent by opening round bracket
+-- N-s --- Namespaces do not indent
+-- g0  --- no identation inside class
+vim.opt.cinoptions  = "(0,N-s,g0,i0"
 
 -- Add side column
 vim.opt.colorcolumn = "80"
@@ -68,4 +72,3 @@ if _G.IS_LINUX then
     -- Don't use fish shell
     vim.shell = '/bin/bash'
 end
-
