@@ -32,7 +32,7 @@ elseif this_computer == 'lenovo_b590' then
     set_colorscheme('darktooth')
 else
     -- Fallback palette
-    set_colorscheme('mint')
+    set_colorscheme('afterglow')
 end
 
 
@@ -49,6 +49,12 @@ vim.api.nvim_create_autocmd('LspTokenUpdate', {
                                                     args.data.client_id,
                                                     '@lsp.typemod.variable.static')
         end
+        if token.type == 'variable' and token.modifiers.globalScope then
+            vim.lsp.semantic_tokens.highlight_token(token,
+                                                    args.buf,
+                                                    args.data.client_id,
+                                                    '@lsp.typemod.variable.static')
+        end
         if token.type == 'enumMember' then
             vim.lsp.semantic_tokens.highlight_token(token,
                                                     args.buf,
@@ -57,5 +63,3 @@ vim.api.nvim_create_autocmd('LspTokenUpdate', {
         end
     end,
 })
-
---
