@@ -2,7 +2,7 @@
 vim.opt.termguicolors = true
 
 -- Function to change nova cs theme
-function set_colorscheme(palette_name)
+function set_nova_palette(palette_name)
     local palette = require('palettes.' .. palette_name)
 
     require('nova_cs_theme_example').set_palette(palette)
@@ -16,25 +16,22 @@ end
 vim.api.nvim_create_user_command(
     'NovaCS',
     function(args)
-        set_colorscheme(args['fargs'][1])
+        set_nova_palette(args['fargs'][1])
     end,
     {
         nargs = 1
     }
 )
 
--- Set colorscheme
-local this_computer = os.getenv('THIS_COMPUTER')
+-- Set nova palette
+local nova_palette = os.getenv('NOVA_PALETTE')
 
-if this_computer == 'lenovo_legion' then
-    set_colorscheme('my_palette')
-elseif this_computer == 'lenovo_b590' then
-    set_colorscheme('darktooth')
-else
+if nova_palette == nil or nova_palette == '' then
     -- Fallback palette
-    set_colorscheme('afterglow')
+    set_nova_palette('afterglow')
+else
+    set_nova_palette(nova_palette)
 end
-
 
 
 -- Lsp's semantic tokens for readonly and static have the same priority, which

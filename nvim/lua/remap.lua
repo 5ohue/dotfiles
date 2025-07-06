@@ -19,6 +19,9 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 
 vim.keymap.set('n', '<leader>nh', ':nohl<CR>', { desc = '[N]o [H]ighlight'})
 
+-- Create new tab
+vim.keymap.set('n', '<leader>wt', ':tab sp<CR>', { desc = '[W]orkspace: [T]ab' })
+
 -- Replace word under cursor
 vim.keymap.set('n', '<leader>cw', ':%s/\\<<C-R><C-W>\\>/', { desc = '[C]hange [W]ord' })
 vim.keymap.set('n', '<leader>cW', ':%s/<C-R><C-A>/',       { desc = '[C]hange BIG [W]ord' })
@@ -35,3 +38,6 @@ vim.keymap.set('n', '<leader>tt', '<cmd>NvimTreeToggle<CR>', { desc = 'Nvim [T]r
 vim.keymap.set('n', '<leader>to', '<cmd>NvimTreeOpen<CR>'  , { desc = 'Nvim [T]ree: [O]pen' })
 vim.keymap.set('n', '<leader>tc', '<cmd>NvimTreeClose<CR>' , { desc = 'Nvim [T]ree: [C]lose' })
 vim.keymap.set('n', '<leader>tf', '<cmd>NvimTreeFocus<CR>' , { desc = 'Nvim [T]ree: [F]ocus' })
+
+-- Codeium remap
+vim.keymap.set('n', '<leader>cmt', '<cmd>Codeium Toggle<CR>', { desc = '[C]odeiu[M] [T]oggle' })

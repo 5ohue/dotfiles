@@ -161,7 +161,7 @@ require('lazy').setup({
     {'5ohue/atlasue.vim'}, -- My own color scheme!!!
     {
         '5ohue/nova_cs_theme_example',
-        dir = '/home/sohue/.git-clones/nova_cs_theme_example'
+        -- dir = '/home/sohue/.git-clones/nova_cs_theme_example'
     },
     {'rebelot/kanagawa.nvim'},
     {'xero/miasma.nvim'},
@@ -196,8 +196,6 @@ require('lazy').setup({
     {'hrsh7th/cmp-vsnip'},
     {'hrsh7th/vim-vsnip'},
     ---- Other
-    {'jose-elias-alvarez/null-ls.nvim'},
-    {'jayp0521/mason-null-ls.nvim'},
     {'williamboman/mason.nvim'},
     {'williamboman/mason-lspconfig.nvim'},
     {
@@ -226,5 +224,11 @@ require('lazy').setup({
         config = true,
         -- Uncomment next line if you want to follow only stable versions
         -- version = "*"
+    },
+
+    -- AI stuff
+    {
+        'Exafunction/codeium.vim',
+        event = 'BufEnter'
     },
 })
