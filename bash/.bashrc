@@ -1,5 +1,18 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+#
+# GIT
+#
+
+# Git editor
 export GIT_EDITOR=nvim
 
+# Setup SSH agent
 env=~/.ssh/agent.env
 
 agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
@@ -21,4 +34,15 @@ elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
 fi
 
 unset env
+
+#
+# Aliases
+#
+alias ls='eza'
+alias grep='grep --color=auto'
+PS1='[\u@\h \W]\$ '
+
+#
+# Cargo
+#
 . "$HOME/.cargo/env"
