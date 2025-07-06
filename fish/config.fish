@@ -2,10 +2,10 @@ if status is-interactive
     ### Hiding fish welcome message
     set fish_greeting
 
-    ### fastfetch pretty output
+    ### Fastfetch pretty output
     fastfetch
 
-    ### ALIASES
+    ### Aliases
     alias exa='eza'
     alias ls='exa -al --color=always --group-directories-first'
     alias vim='nvim'
@@ -29,4 +29,3 @@ if status is-interactive
     thefuck --alias | source
     starship init fish | source
 end
-
