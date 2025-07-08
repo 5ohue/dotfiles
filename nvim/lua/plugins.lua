@@ -227,8 +227,37 @@ require('lazy').setup({
     },
 
     -- AI stuff
+    -- {
+    --     'Exafunction/codeium.vim',
+    --     event = 'BufEnter'
+    -- },
     {
-        'Exafunction/codeium.vim',
-        event = 'BufEnter'
+        "olimorris/codecompanion.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
     },
+    -- {
+    --     'milanglacier/minuet-ai.nvim',
+    --     config = function()
+    --         require('minuet').setup {
+    --             provider = 'openai_fim_compatible',
+    --             n_completions = 3,
+    --             context_window = 1024,
+    --             provider_options = {
+    --                 openai_fim_compatible = {
+    --                     api_key = 'TERM',
+    --                     name = 'Ollama',
+    --                     end_point = 'http://localhost:11434/v1/completions',
+    --                     model = 'qwen2.5-coder:14b',
+    --                     optional = {
+    --                         max_tokens = 56,
+    --                         top_p = 0.9,
+    --                     },
+    --                 },
+    --             },
+    --         }
+    --     end,
+    -- },
 })
