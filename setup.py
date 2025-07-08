@@ -2,6 +2,7 @@
 import os
 import sys
 import subprocess
+import shutil
 from pathlib import Path
 from typing import Dict, List, Optional, Callable, Any
 
@@ -19,6 +20,12 @@ class DotfilesInstaller:
                 'install_func': self.install_symlink,
                 'prompt': 'Do you want to set .bashrc config?',
             },
+            'fish': {
+                'config_path': self.home / '.config' / 'fish',
+                'repo_dir': self.repo_path / 'fish',
+                'install_func': self.install_fish,
+                'prompt': 'Do you want to configure fish?',
+            },
             'tmux': {
                 'config_path': self.home / '.tmux.conf',
                 'repo_config': self.repo_path / 'tmux' / '.tmux.conf',
@@ -31,14 +38,35 @@ class DotfilesInstaller:
                 'install_func': self.install_alacritty,
                 'prompt': 'Do you want to configure alacritty?',
             },
-            'fish': {
+            'neovim': {
                 'config_path': self.home / '.config' / 'nvim',
                 'repo_config': self.repo_path / 'nvim',
                 'install_func': self.install_neovim,
                 'prompt': 'Do you want to set neovim config?',
 
                 'palette_dir': self.repo_path / 'nvim' / 'lua' / 'palettes'
-            }
+            },
+            'hyprland': {
+                'config_dir': self.home / '.config' / 'hypr',
+                'repo_dir': self.repo_path / 'hypr',
+                'install_func': self.install_copy_all_files,
+                'prompt': 'Do you want to configure hyprland?',
+                'files_to_install': [
+                    'hyprland.conf',
+                    'hyprlock.conf',
+                    'hyprpaper.conf',
+                ],
+            },
+            'waybar': {
+                'config_dir': self.home / '.config' / 'waybar',
+                'repo_dir': self.repo_path / 'waybar',
+                'install_func': self.install_copy_all_files,
+                'prompt': 'Do you want to configure waybar?',
+                'files_to_install': [
+                    'config.jsonc',
+                    'style.css',
+                ],
+            },
         }
 
     def run(self):
@@ -49,26 +77,29 @@ class DotfilesInstaller:
 
         for app_name, app_config in self.apps.items():
             if self.ask_yes_no(app_config['prompt'], default='y'):
-                app_config['install_func'](app_name, app_config)
-                print()
+                try:
+                    app_config['install_func'](app_name, app_config)
+                    print()
+                except OSError as e:
+                    print(f"Error installing {app_name} config: {e}", file=sys.stderr)
 
     def install_symlink(self, app_name: str, config: Dict[str, Any]):
-        try:
-            # Ensure parent directory exists
-            config['config_path'].parent.mkdir(parents=True, exist_ok=True)
+        self.create_symlink(config['repo_config'], config['config_path'], True)
 
-            # Handle existing config (backup or skip)
-            self.handle_existing_config(config['config_path'])
+    def install_copy_all_files(self, app_name: str, config: Dict[str, Any]):
+        for filename in config['files_to_install']:
+            if self.ask_yes_no(f"Do you want to copy '{filename}'?"):
+                self.copy_file(config['repo_dir'] / filename, config['config_dir'] / filename, True)
 
-            # Create symlink
-            os.symlink(config['repo_config'], config['config_path'])
-            print(f"Created symlink: {config['config_path']} -> {config['repo_config']}")
-        except OSError as e:
-            print(f"Error installing {app_name} config: {e}", file=sys.stderr)
+        print("\033[1;4;31mMAKE SURE TO INSPECT THE CONFIGS AND REPLACE FILE PATHS!!!\033[0m")
+
+    def install_fish(self, app_name: str, config: Dict[str, Any]):
+        self.create_symlink(config['repo_dir'] / 'config.fish', config['config_path'] / 'config.fish', True)
+        self.create_symlink(config['repo_dir'] / 'conf.d', config['config_path'] / 'conf.d', False)
 
     def install_alacritty(self, app_name: str, config: Dict[str, Any]):
         if Path(config['config_path']).exists():
-            if not self.ask_yes_no("Alacritty config exists, do you want to reconfig?"):
+            if not self.ask_yes_no("Alacritty config exists, do you want to reconfig?", default='n'):
                 return
 
         config_content = '''
@@ -133,7 +164,7 @@ size = {font_size}
 
     def install_neovim(self, app_name: str, config: Dict[str, Any]):
         # First install the config
-        self.install_symlink(app_name, config)
+        self.create_symlink(config['repo_config'], config['config_path'], False)
 
         # Theme selection
         themes = []
@@ -149,8 +180,8 @@ size = {font_size}
 
         subprocess.run(['fish', '-c', f"set -Ux NOVA_PALETTE {selected_theme}"])
 
-
-    def handle_existing_config(self, config_path: Path):
+    @staticmethod
+    def handle_existing_config(config_path: Path):
         """Handle existing config file by backing it up."""
         if config_path.exists():
             backup_path = config_path.with_name(f"{config_path.name}.bak")
@@ -158,6 +189,31 @@ size = {font_size}
                 backup_path.unlink()
             config_path.rename(backup_path)
             print(f"Backed up existing config to {backup_path}")
+
+    @staticmethod
+    def create_symlink(target: Path, link: Path, handle_existing = True):
+        # Ensure parent directory exists
+        link.parent.mkdir(parents=True, exist_ok=True)
+
+        if handle_existing:
+            # Handle existing config (backup or skip)
+            DotfilesInstaller.handle_existing_config(link)
+
+        # Create symlink
+        os.symlink(target, link)
+        print(f"Created symlink: {link} -> {target}")
+
+    @staticmethod
+    def copy_file(src: Path, dst: Path, handle_existing = True):
+        # Ensure parent directory exists
+        dst.parent.mkdir(parents=True, exist_ok=True)
+
+        if handle_existing:
+            # Handle existing config (backup or skip)
+            DotfilesInstaller.handle_existing_config(dst)
+
+        shutil.copy(src, dst)
+        print(f"Copied file: {src} -> {dst}")
 
     @staticmethod
     def ask_yes_no(prompt: str, default: str = 'y') -> bool:

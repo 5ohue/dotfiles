@@ -1,0 +1,138 @@
+@define-color bar-bg       rgba(20, 20, 20, 0.75);
+@define-color bar-border   rgba(30, 30, 30, 0.8);
+@define-color text-fg      rgb(176, 176, 176);
+@define-color text-fg-dark rgb(96, 96, 96);
+@define-color tray-bg      rgba(55, 65, 75, 0.5);
+@define-color tray-border  rgba(35, 35, 35, 0.5);
+
+/******************************************************************************
+ *                                Main styles                                 *
+ ******************************************************************************/
+* {
+    border: none;
+    border-radius: 0rem;
+
+    font-family: Liberation Mono;
+    font-size: 1rem;
+    font-style: normal;
+}
+
+/*
+ * Bar body
+ */
+window#waybar {
+    background: @bar-bg;
+    color: @text-fg;
+}
+
+/*
+ * All widgets
+ */
+widget > * {
+    background: transparent;
+    margin: 0px 5px 0px 5px;
+}
+
+/******************************************************************************
+ *                                 Left side                                  *
+ ******************************************************************************/
+#workspaces button {
+    padding: 0px 5px;
+    border-radius: 16px;
+    color: @text-fg-dark;
+}
+
+#workspaces button.active {
+    background-color: transparent;
+    border-radius: 16px;
+    color: @text-fg;
+}
+
+#workspaces button:hover {
+    background-color: @text-fg;
+    color: black;
+    border-radius: 16px;
+}
+
+/******************************************************************************
+ *                                   Center                                   *
+ ******************************************************************************/
+#window {
+    font-weight: normal;
+    font-weight: bold;
+}
+
+/******************************************************************************
+ *                                 Right side                                 *
+ ******************************************************************************/
+#pulseaudio-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    border: none;
+    box-shadow: none;
+    border-radius: 16px;
+}
+#pulseaudio-slider slider:hover {
+    background-color: #8CF;
+}
+#pulseaudio-slider trough {
+    min-height: 10px;
+    min-width: 80px;
+    border-radius: 5px;
+    background-color: black;
+}
+#pulseaudio-slider highlight {
+    min-width: 10px;
+    border-radius: 5px;
+    background-color: #8CF;
+}
+
+#battery {
+    color: #9ece6a;
+}
+#battery.charging {
+    color: #9ece6a;
+}
+#battery.warning:not(.charging) {
+    background-color: #f7768e;
+    color: #24283b;
+}
+
+#clock {
+    font-weight: bold;
+}
+
+#tray {
+    background-color: @tray-bg;
+
+    border-radius: 100px;
+
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/*
+ * Unused
+ */
+#backlight {
+    background-color: #24283b;
+    color: #db4b4b;
+    border-radius: 0px 0px 0px 0px;
+    margin: 5px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0px 0px;
+}
+
+#pulseaudio {
+    border-radius: 8px;
+    margin-left: 0px;
+}
+
+#pulseaudio.muted {
+    background: transparent;
+    color: #928374;
+    border-radius: 8px;
+    margin-left: 0px;
+}

@@ -1,0 +1,141 @@
+@define-color bar-bg       rgb(20, 20, 20);
+@define-color bar-border   rgb(30, 30, 30);
+@define-color text-fg      rgb(176, 176, 176);
+@define-color text-fg-dark rgb(76, 76, 76);
+@define-color tray-bg      rgb(45, 45, 45);
+@define-color tray-border  rgb(35, 35, 35);
+
+/******************************************************************************
+ *                                Main styles                                 *
+ ******************************************************************************/
+* {
+    border: none;
+    border-radius: 0rem;
+
+    font-family: Liberation Mono;
+    font-size: 1rem;
+    font-style: normal;
+}
+
+/*
+ * Bar body
+ */
+window#waybar {
+    background: @bar-bg;
+    border-top:    5px solid @bar-border;
+    border-bottom: 5px solid @bar-border;
+    color: @text-fg;
+}
+
+/*
+ * All widgets
+ */
+widget > * {
+    background: transparent;
+    margin: 0px 5px 0px 5px;
+}
+
+/******************************************************************************
+ *                                 Left side                                  *
+ ******************************************************************************/
+#workspaces button {
+    padding: 0px 5px;
+    border-radius: 16px;
+    color: @text-fg-dark;
+}
+
+#workspaces button.active {
+    background-color: transparent;
+    border-radius: 16px;
+    color: @text-fg;
+}
+
+#workspaces button:hover {
+    background-color: @text-fg;
+    color: black;
+    border-radius: 16px;
+}
+
+/******************************************************************************
+ *                                   Center                                   *
+ ******************************************************************************/
+#window {
+    font-weight: normal;
+    font-weight: bold;
+}
+
+/******************************************************************************
+ *                                 Right side                                 *
+ ******************************************************************************/
+#pulseaudio-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    border: none;
+    box-shadow: none;
+    border-radius: 16px;
+}
+#pulseaudio-slider slider:hover {
+    background-color: #8CF;
+}
+#pulseaudio-slider trough {
+    min-height: 10px;
+    min-width: 80px;
+    border-radius: 5px;
+    background-color: black;
+}
+#pulseaudio-slider highlight {
+    min-width: 10px;
+    border-radius: 5px;
+    background-color: #8CF;
+}
+
+#battery {
+    color: #9ece6a;
+}
+#battery.charging {
+    color: #9ece6a;
+}
+#battery.warning:not(.charging) {
+    background-color: #f7768e;
+    color: #24283b;
+}
+
+#clock {
+    font-weight: bold;
+}
+
+#tray {
+    background-color: @tray-bg;
+
+    border: 5px solid @tray-border;
+    border-radius: 100px;
+
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/*
+ * Unused
+ */
+#backlight {
+    background-color: #24283b;
+    color: #db4b4b;
+    border-radius: 0px 0px 0px 0px;
+    margin: 5px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0px 0px;
+}
+
+#pulseaudio {
+    border-radius: 8px;
+    margin-left: 0px;
+}
+
+#pulseaudio.muted {
+    background: transparent;
+    color: #928374;
+    border-radius: 8px;
+    margin-left: 0px;
+}
