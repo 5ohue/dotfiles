@@ -77,6 +77,16 @@ class DotfilesInstaller:
                     '3.0',
                 ],
             },
+            'kde': {
+                'config_dir': self.home / '.local' / 'share',
+                'repo_dir': self.repo_path / 'KDE_Stuff',
+                'install_func': self.install_copy_all_files,
+                'prompt': 'Do you want to configure KDE stuff?',
+                'files_to_install': [
+                    'color-schemes',
+                    'konsole',
+                ],
+            },
         }
 
     def run(self):
