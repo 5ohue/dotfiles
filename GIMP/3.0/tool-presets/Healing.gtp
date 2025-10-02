@@ -1,0 +1,25 @@
+# GIMP tool preset file
+
+(icon-name "gimp-tool-heal")
+(name "Healing")
+(tool-options "GimpSourceOptions"
+    (tool "gimp-heal-tool")
+    (brush "2. Hardness 025")
+    (dynamics "Pressure Size")
+    (pattern "Pine")
+    (palette "MyPallete")
+    (brush-size 11)
+    (brush-spacing 0.22)
+    (brush-hardness 0.93999999999999995)
+    (dynamics-enabled no))
+(use-fg-bg no)
+(use-opacity-paint-mode yes)
+(use-brush yes)
+(use-dynamics yes)
+(use-mypaint-brush no)
+(use-gradient no)
+(use-pattern no)
+(use-palette no)
+(use-font no)
+
+# end of GIMP tool preset file

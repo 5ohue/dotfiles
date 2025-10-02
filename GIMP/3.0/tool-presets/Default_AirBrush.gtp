@@ -1,0 +1,34 @@
+# GIMP tool preset file
+
+(icon-name "gimp-tool-paintbrush")
+(name "Default_AirBrush")
+(tool-options "GimpPaintOptions"
+    (tool "gimp-paintbrush-tool")
+    (foreground
+        (color "R'G'B'A double" 32 "\0\0\0\0\0\0\360\77\0\0\0\0\0\0\360\77\0\0\0\0\0\0\360\77\0\0\0\0\0\0\360\77" 0))
+    (background
+        (color "R'G'B'A double" 32 "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\360\77" 0))
+    (paint-mode normal-legacy)
+    (brush "2. Hardness 025")
+    (dynamics "Pressure Size")
+    (pattern "Pine")
+    (gradient "Standard")
+    (palette "MyPallete")
+    (brush-size 157)
+    (brush-spacing 0.21999999999999992)
+    (brush-hardness 0)
+    (dynamics-enabled no)
+    (use-smoothing yes)
+    (smoothing-quality 37)
+    (smoothing-factor 80.900000000000006))
+(use-fg-bg no)
+(use-opacity-paint-mode yes)
+(use-brush yes)
+(use-dynamics yes)
+(use-mypaint-brush no)
+(use-gradient no)
+(use-pattern no)
+(use-palette no)
+(use-font no)
+
+# end of GIMP tool preset file
