@@ -67,6 +67,16 @@ class DotfilesInstaller:
                     'style.css',
                 ],
             },
+            'gimp': {
+                'config_dir': self.home / '.config' / 'GIMP',
+                'repo_dir': self.repo_path / 'GIMP',
+                'install_func': self.install_copy_all_files,
+                'prompt': 'Do you want to configure GIMP?',
+                'files_to_install': [
+                    '2.10',
+                    '3.0',
+                ],
+            },
         }
 
     def run(self):
@@ -212,8 +222,12 @@ size = {font_size}
             # Handle existing config (backup or skip)
             DotfilesInstaller.handle_existing_config(dst)
 
-        shutil.copy(src, dst)
-        print(f"Copied file: {src} -> {dst}")
+        if src.is_file():
+            shutil.copy(src, dst)
+            print(f"Copied file: {src} -> {dst}")
+        elif src.is_dir():
+            shutil.copytree(src, dst)
+            print(f"Copied file tree: {src} -> {dst}")
 
     @staticmethod
     def ask_yes_no(prompt: str, default: str = 'y') -> bool:
