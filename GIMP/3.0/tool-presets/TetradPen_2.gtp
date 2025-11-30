@@ -1,0 +1,33 @@
+# GIMP tool preset file
+
+(icon-name "gimp-tool-paintbrush")
+(name "TetradPen2")
+(tool-options "GimpPaintOptions"
+    (tool "gimp-paintbrush-tool")
+    (foreground
+        (color "R'G'B'A double" 32 "\0\0\0\200\2\225\304\77\0\0\0\300\304\224\324\77\0\0\0\340\215r\342\77\0\0\0\0\0\0\360\77" 0))
+    (background
+        (color "R'G'B'A double" 32 "\0\0\0\40\337\323\343\77\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\360\77" 0))
+    (brush "2. Hardness 025")
+    (dynamics "Speed Size Opacity")
+    (pattern "Pine")
+    (gradient "Land 1")
+    (palette "MS_Paint")
+    (brush-size 4)
+    (brush-spacing 0.050000000000000003)
+    (brush-hardness 0.56000000000000005)
+    (brush-force 1)
+    (dynamics-enabled no)
+    (smoothing-quality 37)
+    (smoothing-factor 19.900000000000006))
+(use-fg-bg yes)
+(use-opacity-paint-mode yes)
+(use-brush yes)
+(use-dynamics yes)
+(use-mypaint-brush no)
+(use-gradient no)
+(use-pattern no)
+(use-palette no)
+(use-font no)
+
+# end of GIMP tool preset file
