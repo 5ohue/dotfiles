@@ -77,9 +77,19 @@ class DotfilesInstaller:
                     '3.0',
                 ],
             },
-            'kde': {
+            'kde .local': {
                 'config_dir': self.home / '.local' / 'share',
-                'repo_dir': self.repo_path / 'KDE_Stuff',
+                'repo_dir': self.repo_path / 'KDE_Stuff' / 'Local_Share',
+                'install_func': self.install_copy_all_files,
+                'prompt': 'Do you want to configure KDE stuff?',
+                'files_to_install': [
+                    'color-schemes',
+                    'konsole',
+                ],
+            },
+            'kde .config': {
+                'config_dir': self.home / '.config',
+                'repo_dir': self.repo_path / 'KDE_Stuff' / 'Config',
                 'install_func': self.install_copy_all_files,
                 'prompt': 'Do you want to configure KDE stuff?',
                 'files_to_install': [
