@@ -186,6 +186,8 @@ require('lazy').setup({
     -- LSP stuff
     ---- LSP support
     {'neovim/nvim-lspconfig'},
+    {'williamboman/mason.nvim'},
+    {'williamboman/mason-lspconfig.nvim'},
     --- Autocompletion
     {'hrsh7th/cmp-nvim-lsp'},
     {'hrsh7th/cmp-buffer'},
@@ -196,8 +198,6 @@ require('lazy').setup({
     {'hrsh7th/cmp-vsnip'},
     {'hrsh7th/vim-vsnip'},
     ---- Other
-    {'williamboman/mason.nvim'},
-    {'williamboman/mason-lspconfig.nvim'},
     {
         "j-hui/fidget.nvim",
         tag = "legacy",

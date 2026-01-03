@@ -128,7 +128,7 @@ class DotfilesInstaller:
 
     def install_fish(self, app_name: str, config: Dict[str, Any]):
         self.create_symlink(config['repo_dir'] / 'config.fish', config['config_path'] / 'config.fish', True)
-        self.create_symlink(config['repo_dir'] / 'conf.d', config['config_path'] / 'conf.d', False)
+        self.create_symlink(config['repo_dir'] / 'conf.d', config['config_path'] / 'conf.d', True)
 
     def install_alacritty(self, app_name: str, config: Dict[str, Any]):
         if Path(config['config_path']).exists():
