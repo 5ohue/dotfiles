@@ -99,6 +99,9 @@ if status is-interactive
     # Custom paths
     set -Ux GITCLONES_DIR $HOME/.git-clones
 
+    set -Ux VCPKG_ROOT $HOME/.git-clones/vcpkg
+    set -gx PATH $VCPKG_ROOT:$PATH
+
     # =============================================
     # Cargo
     # =============================================
