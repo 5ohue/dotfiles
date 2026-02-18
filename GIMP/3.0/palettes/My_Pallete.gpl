@@ -12,12 +12,12 @@ Columns: 0
 192 254 127	Untitled
 127 127 254	Untitled
 253 192 129	Untitled
-237  28  36	Untitled
-255 242   0	Untitled
-  0 166  81	Untitled
-  0 174 239	Untitled
- 46  49 146	Untitled
-236   0 140	Untitled
+237  28  36	Rainbow_Red
+255 242   0	Rainbow_Yellow
+  0 166  81	Rainbow_Green
+  0 174 239	Rainbow_Cyan
+ 46  49 146	Rainbow_Blue
+236   0 140	Rainbow_Magenta
 128 128 128	Untitled
 229 158 137	Untitled
 255 227 214	Untitled
@@ -31,4 +31,6 @@ Columns: 0
 181 170 149	Untitled
  58 119 146	Untitled
  17  71  51	Untitled
- 51  51  51	Untitled
+ 47 199  48	Pen_Green
+158   0   0	Pen_Red
+ 41  82 147	Pen_Blue
