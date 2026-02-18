@@ -1,12 +1,6 @@
 local cmp = require('cmp')
 
 cmp.setup({
-    snippet = {
-        -- REQUIRED - you must specify a snippet engine
-        expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-        end,
-    },
     window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
@@ -20,11 +14,11 @@ cmp.setup({
         -- `select = false` so that it doesn't automatically
         -- accept stuff I didn't choose
         ['<CR>']      = cmp.mapping.confirm({ select = false }),
+        -- ["<A-y>"]     = require('minuet').make_cmp_map()
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        { name = 'vsnip' }, -- For vsnip users.
-        { name = 'minuet' }
+        -- { name = 'minuet' }
     }, {
         { name = 'buffer' },
     }),

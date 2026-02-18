@@ -92,13 +92,6 @@ require('lazy').setup({
             },
         }
     },
-    -- Preview markdown in browser
-    {
-        "iamcco/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        ft = { "markdown" },
-        build = function() vim.fn["mkdp#util#install"]() end,
-    },
     -- Useful plugin to show you pending keybinds.
     {
         'folke/which-key.nvim',
@@ -125,14 +118,7 @@ require('lazy').setup({
         dependencies = { "nvim-lua/plenary.nvim" }
     },
     -- Create pretty images of code from neovim
-    {
-        "mistricky/codesnap.nvim",
-        build = "make",
-        opts = {
-            has_breadcrumbs = true,     -- Add file path
-            bg_theme = "bamboo"
-        }
-    },
+    { "mistricky/codesnap.nvim", tag = "v2.0.0-beta.17" },
     {'nvim-treesitter/nvim-treesitter'},
     {
         'nvim-treesitter/nvim-treesitter-context',
@@ -183,7 +169,7 @@ require('lazy').setup({
     {'morhetz/gruvbox'},
     {'sainnhe/gruvbox-material'},
 
-    -- LSP stuff
+    -- Language support
     ---- LSP support
     {'neovim/nvim-lspconfig'},
     {'williamboman/mason.nvim'},
@@ -194,9 +180,6 @@ require('lazy').setup({
     {'hrsh7th/cmp-path'},
     {'hrsh7th/cmp-cmdline'},
     {'hrsh7th/nvim-cmp'},
-    ---- Snippets
-    {'hrsh7th/cmp-vsnip'},
-    {'hrsh7th/vim-vsnip'},
     ---- Other
     {
         "j-hui/fidget.nvim",
@@ -225,12 +208,22 @@ require('lazy').setup({
         -- Uncomment next line if you want to follow only stable versions
         -- version = "*"
     },
+    -- Preview markdown in browser
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        ft = { "markdown" },
+        build = function() vim.fn["mkdp#util#install"]() end,
+    },
+    {
+        'MeanderingProgrammer/render-markdown.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+        ---@module 'render-markdown'
+        ---@type render.md.UserConfig
+        opts = {},
+    },
 
     -- AI stuff
-    -- {
-    --     'Exafunction/codeium.vim',
-    --     event = 'BufEnter'
-    -- },
     {
         "olimorris/codecompanion.nvim",
         dependencies = {
@@ -238,26 +231,4 @@ require('lazy').setup({
             "nvim-treesitter/nvim-treesitter",
         },
     },
-    -- {
-    --     'milanglacier/minuet-ai.nvim',
-    --     config = function()
-    --         require('minuet').setup {
-    --             provider = 'openai_fim_compatible',
-    --             n_completions = 3,
-    --             context_window = 1024,
-    --             provider_options = {
-    --                 openai_fim_compatible = {
-    --                     api_key = 'TERM',
-    --                     name = 'Ollama',
-    --                     end_point = 'http://localhost:11434/v1/completions',
-    --                     model = 'qwen2.5-coder:14b',
-    --                     optional = {
-    --                         max_tokens = 56,
-    --                         top_p = 0.9,
-    --                     },
-    --                 },
-    --             },
-    --         }
-    --     end,
-    -- },
 })

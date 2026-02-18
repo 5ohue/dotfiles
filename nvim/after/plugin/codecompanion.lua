@@ -111,7 +111,7 @@ require("codecompanion").setup({
             return require("codecompanion.adapters").extend("ollama", {
                 schema = {
                     model = {
-                        default = "qwen2.5-coder:14b",
+                        default = "qwen3-coder:30b",
                     },
                 },
                 headers = {

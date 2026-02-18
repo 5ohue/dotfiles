@@ -2,11 +2,12 @@ require("mason").setup()
 
 require("mason-lspconfig").setup({
     ensure_installed = {
-        "rust_analyzer",
-        "clangd",
-        "pyright",
-        "zls",
-        "gopls",
+        "rust_analyzer",  -- Rust
+        "clangd",         -- C/C++
+        "pyright",        -- Python
+        "zls",            -- Zig
+        "gopls",          -- Golang
+        "marksman",       -- Markdown
 
         -- Web stuff
         "html",           -- HTML
