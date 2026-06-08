@@ -10,6 +10,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         -- -- See `:help vim.lsp.*` for documentation on any of the below functions
 
+        -- -- Telescope
+
         -- Jump to the definition of the word under your cursor.
         --  This is where a variable was first declared, or where a function is defined, etc.
         --  To jump back, press <C-t>.
@@ -34,6 +36,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- Fuzzy find all the symbols in your current workspace
         --  Similar to document symbols, except searches over your whole project.
         map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+
+        map('<leader>ci', require('telescope.builtin').lsp_incoming_calls, '[C]alls: [I]ncoming')
+        map('<leader>co', require('telescope.builtin').lsp_outgoing_calls, '[C]alls: [O]utcoming')
+
+        -- Just LSP
 
         -- Rename the variable under your cursor
         --  Most Language Servers support renaming across files, etc.
@@ -72,8 +79,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         -- Litee stuff
         vim.keymap.set('n', '<leader>sl', vim.lsp.buf.document_symbol, { buffer = ev.buf, desc = '[S]ymbols [L]ist' })
-        vim.keymap.set('n', '<leader>ci', vim.lsp.buf.incoming_calls,  { buffer = ev.buf, desc = '[C]alls: [i]ncoming' })
-        vim.keymap.set('n', '<leader>co', vim.lsp.buf.outgoing_calls,  { buffer = ev.buf, desc = '[C]alls: [o]utcoming' })
     end,
-}
-)
+})

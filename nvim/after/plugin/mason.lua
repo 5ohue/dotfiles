@@ -8,6 +8,7 @@ require("mason-lspconfig").setup({
         "zls",            -- Zig
         "gopls",          -- Golang
         "marksman",       -- Markdown
+        "glsl_analyzer",  -- GLSL
 
         -- Web stuff
         "html",           -- HTML

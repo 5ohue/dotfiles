@@ -228,4 +228,5 @@ require('lazy').setup({
             "nvim-treesitter/nvim-treesitter",
         },
     },
+    {'milanglacier/minuet-ai.nvim'},
 })

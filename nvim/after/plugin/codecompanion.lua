@@ -1,11 +1,47 @@
+function make_adapter(_model)
+    return function()
+        return require("codecompanion.adapters").extend("openai_compatible", {
+            env = {
+                url = "http://127.0.0.1:8012",
+                api_key = "TERM",
+                chat_url = "/v1/chat/completions",
+            },
+            schema = {
+                model = { default = _model }, -- Your coder model
+            },
+            handlers = {
+                parse_message_meta = function(self, data)
+                    local extra = data.extra
+                    if extra and extra.reasoning_content then
+                        data.output.reasoning = { content = extra.reasoning_content }
+                        if data.output.content == "" then
+                            data.output.content = nil
+                        end
+                    end
+                    return data
+                end,
+            },
+        })
+    end
+end
+
 require("codecompanion").setup({
-    strategies = {
-        -- Change the default chat adapter
+    adapters = {
+        http = {
+            -- qwen3 = make_adapter("Jackrong/Qwopus3.5-9B-Coder-MTP-GGUF:Q8_0"),
+            qwen3 = make_adapter("unsloth/Qwen3.6-35B-A3B-MTP-GGUF:MXFP4_MOE"),
+            qwen2coder = make_adapter("unsloth/Qwen2.5-Coder-14B-Instruct-128K-GGUF:Q4_K_M"),
+        },
+    },
+    interactions = {
         chat = {
-            adapter = "ollama",
+            adapter = "qwen3",
+            opts = {
+                completion_provider = "cmp",
+            },
         },
         inline = {
-            adapter = "ollama",
+            adapter = "qwen3",
             keymaps = {
                 accept_change = {
                     modes = { n = "ga" },
@@ -18,7 +54,7 @@ require("codecompanion").setup({
             },
         },
         cmd = {
-            adapter = "ollama",
+            adapter = "qwen3",
         },
     },
     opts = {
@@ -29,98 +65,23 @@ require("codecompanion").setup({
         action_palette = {
             width = 95,
             height = 10,
-            prompt = "Prompt ", -- Prompt used for interactive LLM calls
-            provider = "default", -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks". If not specified, the plugin will autodetect installed providers.
+            prompt = "Prompt ",
+            provider = "telescope",
             opts = {
-                show_default_actions = true, -- Show the default actions in the action palette?
-                show_default_prompt_library = true, -- Show the default prompt library in the action palette?
+                show_default_actions = true,
+                show_default_prompt_library = true,
+                title = "CodeCompanion actions",
             },
         },
     },
     prompt_library = {
-        ["Boilerplate HTML"] = {
-            strategy = "inline",
-            description = "Generate some boilerplate HTML",
-            opts = {
-                mapping = "<LocalLeader>ch"
-            },
-            prompts = {
-                {
-                    role = "system",
-                    content = "You are an expert HTML programmer",
-                },
-                {
-                    role = "user",
-                    content = "<user_prompt>Please generate some HTML boilerplate for me. Return the code only and no markdown codeblocks</user_prompt>",
-                },
+        markdown = {
+            dirs = {
+                -- Relative
+                vim.fn.getcwd() .. "/.prompts",
+                -- Absolute
+                "~/.config/nvim/.prompts",
             },
         },
-        ["Add Comments"] = {
-            strategy = "inline",
-            description = "Your Special Inline Prompt",
-            opts = {
-                placement = "replace"
-            },
-            prompts = {
-                {
-                    role = "system",
-                    content = "I want you to act as a senior developer. For the provided code you MUST NOT change the coding style it was originally written in.",
-                },
-                {
-                    role = "user",
-                    content = "<user_prompt>Please add comments to this code sample.</user_prompt>",
-                }
-            }
-        },
-        ["Code Expert"] = {
-            strategy = "chat",
-            description = "Get some special advice from an LLM",
-            opts = {
-                mapping = "<LocalLeader>ce",
-                modes = { "v" },
-                short_name = "expert",
-                auto_submit = true,
-                stop_context_insertion = true,
-                user_prompt = true,
-            },
-            prompts = {
-                {
-                    role = "system",
-                    content = function(context)
-                        return "I want you to act as a senior "
-                        .. context.filetype
-                        .. " developer. I will ask you specific questions and I want you to return concise explanations and codeblock examples."
-                    end,
-                },
-                {
-                    role = "user",
-                    content = function(context)
-                        local text = require("codecompanion.helpers.actions").get_code(context.start_line, context.end_line)
-
-                        return "I have the following code:\n\n```" .. context.filetype .. "\n" .. text .. "\n```\n\n"
-                    end,
-                    opts = {
-                        contains_code = true,
-                    }
-                },
-            },
-        },
-    },
-    adapters = {
-        ollama = function()
-            return require("codecompanion.adapters").extend("ollama", {
-                schema = {
-                    model = {
-                        default = "qwen3-coder:30b",
-                    },
-                },
-                headers = {
-                    ["Content-Type"] = "application/json",
-                },
-                parameters = {
-                    sync = true,
-                },
-            })
-        end,
     },
 })
