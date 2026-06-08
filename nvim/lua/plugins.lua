@@ -117,9 +117,12 @@ require('lazy').setup({
         branch = "harpoon2",
         dependencies = { "nvim-lua/plenary.nvim" }
     },
-    -- Create pretty images of code from neovim
-    { "mistricky/codesnap.nvim", tag = "v2.0.0-beta.17" },
-    {'nvim-treesitter/nvim-treesitter'},
+    {
+        "nvim-treesitter/nvim-treesitter",
+        branch = 'main',
+        lazy = false,
+        build = ":TSUpdate"
+    },
     {
         'nvim-treesitter/nvim-treesitter-context',
         opts = {
@@ -190,12 +193,6 @@ require('lazy').setup({
         },
     },
     {'lervag/vimtex'},
-    -- Litee is a plugin library used for some neat LSP stuff
-    {'ldelossa/litee.nvim'},
-    -- `,s` to show the symbols in the file
-    {'ldelossa/litee-symboltree.nvim'},
-    -- Show the call tree
-    {'ldelossa/litee-calltree.nvim'},
     -- Highlight all the symbols that are under the cursor
     {'RRethy/vim-illuminate'},
     -- A pretty list for showing diagnostics, references, telescope results and location lists to help you solve all the trouble your code is causing.
@@ -203,7 +200,7 @@ require('lazy').setup({
     -- :Neogen command to create documentation quickly
     {
         "danymat/neogen",
-        dependencies = "nvim-treesitter/nvim-treesitter",
+        -- dependencies = "nvim-treesitter/nvim-treesitter",
         config = true,
         -- Uncomment next line if you want to follow only stable versions
         -- version = "*"
@@ -217,7 +214,7 @@ require('lazy').setup({
     },
     {
         'MeanderingProgrammer/render-markdown.nvim',
-        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
         ---@module 'render-markdown'
         ---@type render.md.UserConfig
         opts = {},
