@@ -33,7 +33,7 @@ require('lazy').setup({
             }
         }
     },
-    -- Tab identation helper
+    -- Tab identation highlighting
     {'lukas-reineke/indent-blankline.nvim', main = "ibl", opts = {}},
     -- Comment lines using `gc` command
     {'numToStr/Comment.nvim', opts = {}},
@@ -109,14 +109,6 @@ require('lazy').setup({
             -- }
         end,
     },
-    -- Color nested brackets differently
-    {'HiPhish/rainbow-delimiters.nvim'},
-    -- Convinient file navigation
-    {
-        "ThePrimeagen/harpoon",
-        branch = "harpoon2",
-        dependencies = { "nvim-lua/plenary.nvim" }
-    },
     {
         "nvim-treesitter/nvim-treesitter",
         branch = 'main',
@@ -150,7 +142,7 @@ require('lazy').setup({
     {'5ohue/atlasue.vim'}, -- My own color scheme!!!
     {
         '5ohue/nova_cs_theme_example',
-        -- dir = '/home/sohue/.git-clones/nova_cs_theme_example'
+        dir = '/home/sohue/Projects/Personal/nova_cs_theme_example'
     },
     {'rebelot/kanagawa.nvim'},
     {'xero/miasma.nvim'},
@@ -184,6 +176,7 @@ require('lazy').setup({
     {'hrsh7th/cmp-cmdline'},
     {'hrsh7th/nvim-cmp'},
     ---- Other
+    -- LSP status UI (bottom right stuff)
     {
         "j-hui/fidget.nvim",
         tag = "legacy",
@@ -207,10 +200,18 @@ require('lazy').setup({
     },
     -- Preview markdown in browser
     {
-        "iamcco/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        ft = { "markdown" },
-        build = function() vim.fn["mkdp#util#install"]() end,
+        "selimacerbas/markdown-preview.nvim",
+        dependencies = { "selimacerbas/live-server.nvim" },
+        config = function()
+            require("markdown_preview").setup({
+                -- all optional; sane defaults shown
+                instance_mode = "takeover",  -- "takeover" (one tab) or "multi" (tab per instance)
+                port = 0,                    -- 0 = auto (8421 for takeover, OS-assigned for multi)
+                open_browser = true,
+                default_theme = "dark",      -- "dark" or "light"; initial preview theme
+                debounce_ms = 300,
+            })
+        end,
     },
     {
         'MeanderingProgrammer/render-markdown.nvim',
