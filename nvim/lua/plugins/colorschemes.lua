@@ -1,3 +1,4 @@
+-- Colorschemes
 return {
     {"5ohue/atlasue.vim"}, -- My own color scheme!!!
     {

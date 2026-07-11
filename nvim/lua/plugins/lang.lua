@@ -1,3 +1,4 @@
+-- Language support
 return {
     ---- LSP Support ----
     {"neovim/nvim-lspconfig"},
@@ -17,16 +18,14 @@ return {
         "j-hui/fidget.nvim",
         tag = "legacy",
         event = "LspAttach",
-        opts = {
-            -- options
-        },
+        opts = { },
     },
     -- Highlight all the symbols that are under the cursor
     {"RRethy/vim-illuminate"},
     -- A pretty list for showing diagnostics, references, telescope results and location lists to help you solve all the trouble your code is causing.
     {
         "folke/trouble.nvim",
-        opts = {},
+        opts = { },
         cmd = "Trouble",
         keys = {
             {
@@ -42,21 +41,19 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
         ---@module "render-markdown"
         ---@type render.md.UserConfig
-        opts = {},
+        opts = { },
     },
     -- Preview markdown in browser
     {
         "selimacerbas/markdown-preview.nvim",
         dependencies = { "selimacerbas/live-server.nvim" },
-        config = function()
-            require("markdown_preview").setup({
-                -- all optional; sane defaults shown
-                instance_mode = "takeover",  -- "takeover" (one tab) or "multi" (tab per instance)
-                port = 0,                    -- 0 = auto (8421 for takeover, OS-assigned for multi)
-                open_browser = true,
-                default_theme = "dark",      -- "dark" or "light"; initial preview theme
-                debounce_ms = 300,
-            })
-        end,
+        opts = {
+            -- all optional; sane defaults shown
+            instance_mode = "takeover",  -- "takeover" (one tab) or "multi" (tab per instance)
+            port = 0,                    -- 0 = auto (8421 for takeover, OS-assigned for multi)
+            open_browser = true,
+            default_theme = "dark",      -- "dark" or "light"; initial preview theme
+            debounce_ms = 300,
+        },
     },
 }

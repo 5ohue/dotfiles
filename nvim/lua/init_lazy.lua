@@ -13,3 +13,6 @@ if not vim.loop.fs_stat(lazypath) then
     }
 end
 vim.opt.rtp:prepend(lazypath)
+
+-- Install all needed plugins using Lazy
+require("lazy").setup("plugins")
