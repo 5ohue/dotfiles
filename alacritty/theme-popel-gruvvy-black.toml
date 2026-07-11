@@ -1,5 +1,5 @@
 [colors.bright]
-black      =  "#3e3c36"
+black      =  "#202020"
 red        =  "#fd513c"
 yellow     =  "#f4c383"
 green      =  "#7ac777"
@@ -9,7 +9,7 @@ magenta    =  "#db8ba1"
 white      =  "#e9d9b1"
 
 [colors.normal]
-black      =  "#202020"
+black      =  "#020202"
 red        =  "#c54739"
 yellow     =  "#cfa56a"
 green      =  "#4e9a65"
