@@ -3,9 +3,7 @@ return {
     {
         "5ohue/nova_cs.nvim",
         build = function(plugin)
-            local nova_cs = require("nova_cs")
-            nova_cs.setup(plugin.opts or {})
-            nova_cs.build()
+            require("nova_cs").build(plugin.opts or {})
         end,
         -- If it runs before "bufferline", it will be screwed
         priority = 1000,
