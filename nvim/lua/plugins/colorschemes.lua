@@ -1,23 +1,27 @@
--- Colorschemes
 return {
-    {"5ohue/atlasue.vim"}, -- My own color scheme!!!
+    -- My colorschemes
     {
-        "5ohue/nova_cs_theme_example",
-        -- dir = "~/Projects/Personal/nova_cs_theme_example"
-    },
-    {"rebelot/kanagawa.nvim"},
-    {"xero/miasma.nvim"},
-    {
-        "ribru17/bamboo.nvim",
-        lazy = false,
-        priority = 1000,
-        config = function()
-            require("bamboo").setup{}
-            require("bamboo").load()
+        "5ohue/nova_cs.nvim",
+        build = function(plugin)
+            local nova_cs = require("nova_cs")
+            nova_cs.setup(plugin.opts or {})
+            nova_cs.build()
         end,
+        -- If it runs before "bufferline", it will be screwed
+        priority = 1000,
+        opts = {
+            colorscheme = "soup_nova",
+        },
     },
-    {"bdesham/biogoo"},
-    {"noahfrederick/vim-noctu"},
-    {"morhetz/gruvbox"},
-    {"sainnhe/gruvbox-material"},
+    { "5ohue/soup_nova.nvim" },
+    { "5ohue/atlasue.vim" },
+
+    -- Other colorschemes
+    { "rebelot/kanagawa.nvim" },
+    { "xero/miasma.nvim" },
+    { "ribru17/bamboo.nvim" },
+    { "bdesham/biogoo" },
+    { "noahfrederick/vim-noctu" },
+    { "morhetz/gruvbox" },
+    { "sainnhe/gruvbox-material" },
 }

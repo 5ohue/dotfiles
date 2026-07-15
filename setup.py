@@ -43,8 +43,6 @@ class DotfilesInstaller:
                 'repo_config': self.repo_path / 'nvim',
                 'install_func': self.install_neovim,
                 'prompt': 'Do you want to set neovim config?',
-
-                'palette_dir': self.repo_path / 'nvim' / 'lua' / 'palettes'
             },
             'hyprland': {
                 'config_dir': self.home / '.config' / 'hypr',
@@ -197,20 +195,6 @@ size = {font_size}
     def install_neovim(self, app_name: str, config: Dict[str, Any]):
         # First install the config
         self.create_symlink(config['repo_config'], config['config_path'], False)
-
-        # Theme selection
-        themes = []
-        for filename in os.listdir(config['palette_dir']):
-            themes.append(filename[:-4])
-
-        print("Available fonts:")
-        for i, theme in enumerate(themes, 1):
-            print(f"{i}. {theme}")
-
-        selection = self.ask_choice("Choose font: ", range(1, len(themes) + 1))
-        selected_theme = themes[selection - 1]
-
-        subprocess.run(['fish', '-c', f"set -Ux NOVA_PALETTE {selected_theme}"])
 
     @staticmethod
     def handle_existing_config(config_path: Path):

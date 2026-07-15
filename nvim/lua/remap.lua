@@ -1,34 +1,61 @@
+local map = vim.keymap.set
+
 vim.g.mapleader = ' '
 
-vim.keymap.set('n', '<leader>q', ':q<CR>', { desc = '[Q]uit the current file' })
+-- Quit
+map('n', '<leader>q', ':q<CR>',  { desc = '[Q]uit the current file' })
+map('n', '<leader>Q', ':q!<CR>', { desc = '[Q!]uit the current file' })
 
-vim.keymap.set({'n', 'x'}, '<leader>cy', '"+y', { desc = 'System [c]lipboard: [y]ank'  })
-vim.keymap.set({'n', 'x'}, '<leader>cp', '"+p', { desc = 'System [c]lipboard: [p]aste' })
+-- 'x' means visual mode
+map({'n', 'x'}, '<leader>cy', '"+y', { desc = 'System [c]lipboard: [y]ank'  })
+map({'n', 'x'}, '<leader>cp', '"+p', { desc = 'System [c]lipboard: [p]aste' })
+map({'n', 'x'}, '<leader>p', '"_dP', { desc = '[P]aste without yanking' })
+map({'n', 'x'}, '<leader>d', '"_d', { desc = '[d]elete without yanking' })
+map({'n', 'x'}, '<leader>D', '"_D', { desc = '[D]elete without yanking' })
 
-vim.keymap.set({'n', 'x'}, 'x', '"_x') -- `x` does not mess with registers
+-- Don't yank text deleted with 'x'
+map({'n', 'x'}, 'x', '"_x')
 
-vim.keymap.set('n', '<TAB>',   '<cmd>bnext<cr>')
-vim.keymap.set('n', '<S-TAB>', '<cmd>bprevious<cr>')
+map('n', '<TAB>',   '<cmd>bnext<cr>')
+map('n', '<S-TAB>', '<cmd>bprevious<cr>')
 
-vim.keymap.set('v', 'gj', ":m '>+1<CR>gv=gv")
-vim.keymap.set('v', 'gk', ":m '>-2<CR>gv=gv")
+-- Resize windows
+map('n', '<C-Up>', ':resize +2<CR>', { desc = 'Increase window height' })
+map('n', '<C-Down>', ':resize -2<CR>', { desc = 'Decrease window height' })
+map('n', '<C-Left>', ':vertical resize -2<CR>', { desc = 'Decrease window width' })
+map('n', '<C-Right>', ':vertical resize +2<CR>', { desc = 'Increase window width' })
 
-vim.keymap.set('n', 'n', 'nzzzv')
-vim.keymap.set('n', 'N', 'Nzzzv')
+-- Splits
+map('n', '<leader>sv', '<C-w>v')   -- vertical split
+map('n', '<leader>sh', '<C-w>s')   -- horizontal split
+map('n', '<leader>se', '<C-w>=')   -- make equal size
+map('n', '<leader>sx', '<cmd>close<CR>') -- close current split
 
-vim.keymap.set('n', '<leader>nh', ':nohl<CR>', { desc = '[N]o [H]ighlight'})
+-- Move selected lines up/down
+map('v', 'gj', ":m '>+1<CR>gv=gv")
+map('v', 'gk', ":m '>-2<CR>gv=gv")
+
+-- Keep selection after indenting
+map('v', '<', '<gv', { desc = 'Indent left and keep selection' })
+map('v', '>', '>gv', { desc = 'Indent right and keep selection' })
+
+-- Increment/decrement numbers
+map('n', '+', '<C-a>', { desc = 'Increment number' })
+map('n', '-', '<C-x>', { desc = 'Decrement number' })
+
+-- n - go to the next search match
+-- zz - center the current line in the window
+-- zv - open the fold under the cursor if it is folded
+map('n', 'n', 'nzzzv')
+map('n', 'N', 'Nzzzv')
+
+-- Keep cursor centered when scrolling
+map('n', '<C-d>', '<C-d>zz')
+map('n', '<C-u>', '<C-u>zz')
+
+-- Don't higlight search matches
+map('n', '<leader>nh', ':nohl<CR>', { desc = '[N]o [H]ighlight'})
 
 -- Replace word under cursor
-vim.keymap.set('n', '<leader>cw', ':%s/\\<<C-R><C-W>\\>/', { desc = '[C]hange [W]ord' })
-vim.keymap.set('n', '<leader>cW', ':%s/<C-R><C-A>/',       { desc = '[C]hange BIG [W]ord' })
-
--- Greatest remap ever
-vim.keymap.set('x', '<leader>p', '"_dP', { desc = '[P]aste without yanking the deleted text' })
-
--- vim-bbye remap
-vim.keymap.set('n', '<leader>bd', '<cmd>Bdelete<CR>')
-vim.keymap.set('n', '<leader>bD', '<cmd>Bdelete!<CR>')
-
--- nvim-tree remaps
-vim.keymap.set('n', '<leader>tt', '<cmd>NvimTreeToggle<CR>', { desc = 'Nvim [T]ree: [T]oggle' })
-vim.keymap.set('n', '<leader>tf', '<cmd>NvimTreeFocus<CR>' , { desc = 'Nvim [T]ree: [F]ocus' })
+map('n', '<leader>cw', ':%s/\\<<C-R><C-W>\\>/', { desc = '[C]hange [W]ord' })
+map('n', '<leader>cW', ':%s/<C-R><C-A>/',       { desc = '[C]hange BIG [W]ord' })

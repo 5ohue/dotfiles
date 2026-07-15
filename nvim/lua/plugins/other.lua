@@ -8,5 +8,5 @@ return {
             "nvim-treesitter/nvim-treesitter",
         },
     },
-    {"milanglacier/minuet-ai.nvim"},
+    { "milanglacier/minuet-ai.nvim" },
 }

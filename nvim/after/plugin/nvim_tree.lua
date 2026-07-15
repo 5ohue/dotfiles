@@ -1,9 +1,4 @@
--- disable netrw at the very start of your init.lua
--- vim.g.loaded_netrw       = 1
--- vim.g.loaded_netrwPlugin = 1
-
--- OR setup with some options
-require("nvim-tree").setup({
+require('nvim-tree').setup({
     sort = {
         sorter = "case_sensitive",
     },
@@ -23,3 +18,6 @@ require("nvim-tree").setup({
 })
 
 vim.api.nvim_create_user_command('Sex', 'NvimTreeOpen', {})
+
+vim.keymap.set('n', '<leader>tt', '<cmd>NvimTreeToggle<CR>', { desc = 'Nvim [T]ree: [T]oggle' })
+vim.keymap.set('n', '<leader>tf', '<cmd>NvimTreeFocus<CR>' , { desc = 'Nvim [T]ree: [F]ocus' })

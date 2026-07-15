@@ -1,16 +1,16 @@
 -- Language support
 return {
     ---- LSP Support ----
-    {"neovim/nvim-lspconfig"},
-    {"williamboman/mason.nvim"},
-    {"williamboman/mason-lspconfig.nvim"},
+    { "neovim/nvim-lspconfig" },
+    { "williamboman/mason.nvim" },
+    { "williamboman/mason-lspconfig.nvim" },
 
     ---- Autocompletion ----
-    {"hrsh7th/cmp-nvim-lsp"},
-    {"hrsh7th/cmp-buffer"},
-    {"hrsh7th/cmp-path"},
-    {"hrsh7th/cmp-cmdline"},
-    {"hrsh7th/nvim-cmp"},
+    { "hrsh7th/cmp-nvim-lsp" },
+    { "hrsh7th/cmp-buffer" },
+    { "hrsh7th/cmp-path" },
+    { "hrsh7th/cmp-cmdline" },
+    { "hrsh7th/nvim-cmp" },
 
     ---- LSP UI ----
     -- LSP status UI (bottom right stuff)
@@ -18,14 +18,14 @@ return {
         "j-hui/fidget.nvim",
         tag = "legacy",
         event = "LspAttach",
-        opts = { },
+        opts = {},
     },
     -- Highlight all the symbols that are under the cursor
-    {"RRethy/vim-illuminate"},
+    { "RRethy/vim-illuminate" },
     -- A pretty list for showing diagnostics, references, telescope results and location lists to help you solve all the trouble your code is causing.
     {
         "folke/trouble.nvim",
-        opts = { },
+        opts = {},
         cmd = "Trouble",
         keys = {
             {
@@ -41,7 +41,7 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
         ---@module "render-markdown"
         ---@type render.md.UserConfig
-        opts = { },
+        opts = {},
     },
     -- Preview markdown in browser
     {
@@ -49,11 +49,25 @@ return {
         dependencies = { "selimacerbas/live-server.nvim" },
         opts = {
             -- all optional; sane defaults shown
-            instance_mode = "takeover",  -- "takeover" (one tab) or "multi" (tab per instance)
-            port = 0,                    -- 0 = auto (8421 for takeover, OS-assigned for multi)
+            instance_mode = "takeover", -- "takeover" (one tab) or "multi" (tab per instance)
+            port = 0,                   -- 0 = auto (8421 for takeover, OS-assigned for multi)
             open_browser = true,
-            default_theme = "dark",      -- "dark" or "light"; initial preview theme
+            default_theme = "dark",     -- "dark" or "light"; initial preview theme
             debounce_ms = 300,
+        },
+    },
+
+    -- Completion for neovim lua scripts
+    {
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+        opts = {
+            library = {
+                -- Load luvit types when the `vim.uv` word is found
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+                -- Optional: Allows completion of your plugin's own dependencies if needed
+                -- "telescope.nvim"
+            },
         },
     },
 }
