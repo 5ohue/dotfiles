@@ -2,6 +2,14 @@
 local M = {}
 -- Variables ------------------------------------------------------------------
 
+local uname = vim.loop.os_uname()
+
+M.os = uname.sysname
+M.is_mac = M.os == 'Darwin'
+M.is_linux = M.os == 'Linux'
+M.is_windows = M.os:find('Windows') and true or false
+M.is_wsl = M.is_linux and uname.release:find('Microsoft') and true or false
+
 M.projects_dir = "~/Projects/"
 M.line_width = 79
 

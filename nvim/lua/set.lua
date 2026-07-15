@@ -61,7 +61,7 @@ vim.opt.ttimeoutlen = 0
 vim.g.have_nerd_font = true
 
 -- Something primeagen did with his swap file
-if vim.fn.has("linux") then
+if utl.is_linux then
     vim.opt.swapfile = false
     vim.opt.backup = false
     vim.opt.undodir = os.getenv("HOME") .. "/.cache/nvim_undodir"
